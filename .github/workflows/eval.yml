@@ -1,0 +1,50 @@
+name: "Evaluation Automatique - Projet 1"
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  evaluate:
+    name: "Evaluation du projet"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        continue-on-error: true
+
+      - name: Run auto-evaluation
+        run: pytest tests/test_auto_eval.py -v --tb=short --junitxml=eval_results.xml
+        continue-on-error: true
+
+      - name: Generate score report
+        if: always()
+        run: python tests/generate_report.py
+
+      - name: Post report to job summary
+        if: always()
+        run: cat evaluation_report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-report
+          path: |
+            evaluation_report.md
+            eval_results.xml

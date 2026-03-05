@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CI artifacts (generated)
+eval_results.xml
+evaluation_report.md
+analyse_toulon_executed.ipynb
+notebook_execution.log
+
+# Secrets
+.env
+.env.local
