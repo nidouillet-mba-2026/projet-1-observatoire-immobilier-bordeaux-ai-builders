@@ -57,7 +57,7 @@ streamlit run app/streamlit_app.py
 |--------|------|--------------------------|
 | Maxime Ribes et Matthieu Barric | Data Engineer | ... |
 | Lena Pedelahore | Data Scientist | ... |
-| Matthieu Baric et Alexis De Mallet | AI Engineer | ... |
+| Matthieu Baric et Alexis De Malet | AI Engisneer | ... |
 | Lilou Legenvre et Maxime Ribes | Frontend / DevOps | ... |
 
 ## Donnees
