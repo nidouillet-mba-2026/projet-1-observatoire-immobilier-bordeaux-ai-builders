@@ -1,0 +1,5 @@
+# Testing dependencies
+pytest>=7.0.0
+
+# Data processing
+pandas>=1.3.0

@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/JY1xUUGg)
 # Projet 1 : Observatoire du Marche Immobilier Toulonnais
 
 ## Objectif
@@ -54,10 +55,10 @@ streamlit run app/streamlit_app.py
 
 | Membre | Role | Contributions principales |
 |--------|------|--------------------------|
-| Prenom NOM | Data Engineer | ... |
-| Prenom NOM | Data Scientist | ... |
-| Prenom NOM | AI Engineer | ... |
-| Prenom NOM | Frontend / DevOps | ... |
+| Maxime Ribes et Matthieu Barric | Data Engineer | ... |
+| Lena Pedelahore | Data Scientist | ... |
+| Matthieu Baric et Alexis De Mallet | AI Engineer | ... |
+| Lilou Legenvre et Maxime Ribes | Frontend / DevOps | ... |
 
 ## Donnees
 
