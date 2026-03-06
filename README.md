@@ -55,10 +55,10 @@ streamlit run app/streamlit_app.py
 
 | Membre | Role | Contributions principales |
 |--------|------|--------------------------|
-| Prenom NOM | Data Engineer | ... |
-| Prenom NOM | Data Scientist | ... |
-| Prenom NOM | AI Engineer | ... |
-| Prenom NOM | Frontend / DevOps | ... |
+| Maxime Ribes et Matthieu Barric | Data Engineer | ... |
+| Lena Pedelahore | Data Scientist | ... |
+| Matthieu Baric et Alexis De Mallet | AI Engineer | ... |
+| Lilou Legenvre et Maxime Ribes | Frontend / DevOps | ... |
 
 ## Donnees
 
