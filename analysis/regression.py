@@ -5,43 +5,57 @@ Reference : Joel Grus, "Data Science From Scratch", chapitre 14.
 IMPORTANT : N'importez pas sklearn, numpy ou scipy pour ces fonctions.
 """
 
-from analysis.stats import mean, variance, covariance
+from stats import mean
 
 
-def predict(alpha: float, beta: float, x_i: float) -> float:
-    """Predit y pour une valeur x : y = alpha + beta * x."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez predict() - voir Grus ch.14")
+def predict(x: float, alpha: float, beta: float) -> float:
+    """Prediction du modele lineaire."""
+    return beta * x + alpha
 
 
-def error(alpha: float, beta: float, x_i: float, y_i: float) -> float:
-    """Calcule l'erreur de prediction pour un point."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez error() - voir Grus ch.14")
-
-
-def sum_of_sqerrors(alpha: float, beta: float, x: list, y: list) -> float:
-    """Somme des erreurs au carre sur tous les points."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez sum_of_sqerrors() - voir Grus ch.14")
-
-
-def least_squares_fit(x: list[float], y: list[float]) -> tuple[float, float]:
+def least_squares_fit(xs: list[float], ys: list[float]) -> tuple[float, float]:
     """
-    Trouve alpha et beta qui minimisent la somme des erreurs au carre.
-    Retourne (alpha, beta) tels que y ≈ alpha + beta * x.
+    Calcule les coefficients de regression lineaire.
+    Retourne (alpha, beta)
     """
-    # VOTRE CODE ICI
-    # Indices : beta = covariance(x, y) / variance(x)
-    #           alpha = mean(y) - beta * mean(x)
-    raise NotImplementedError("Implementez least_squares_fit() - voir Grus ch.14")
+
+    mean_x = mean(xs)
+    mean_y = mean(ys)
+
+    numerator = 0
+    denominator = 0
+
+    for x, y in zip(xs, ys):
+        numerator += (x - mean_x) * (y - mean_y)
+        denominator += (x - mean_x) ** 2
+
+    beta = numerator / denominator
+    alpha = mean_y - beta * mean_x
+
+    return alpha, beta
 
 
-def r_squared(alpha: float, beta: float, x: list, y: list) -> float:
-    """
-    Coefficient de determination R².
-    R² = 1 - (SS_res / SS_tot)
-    1.0 = ajustement parfait, 0.0 = le modele n'explique rien.
-    """
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez r_squared() - voir Grus ch.14")
+def sum_of_sqerrors(xs: list[float], ys: list[float], alpha: float, beta: float) -> float:
+    """Somme des erreurs au carré."""
+
+    total = 0
+
+    for x, y in zip(xs, ys):
+        predicted = predict(x, alpha, beta)
+        total += (y - predicted) ** 2
+
+    return total
+
+
+def r_squared(xs: list[float], ys: list[float], alpha: float, beta: float) -> float:
+    """Coefficient de determination R²."""
+
+    mean_y = mean(ys)
+
+    total_variance = 0
+    for y in ys:
+        total_variance += (y - mean_y) ** 2
+
+    unexplained = sum_of_sqerrors(xs, ys, alpha, beta)
+
+    return 1 - unexplained / total_variance

@@ -11,32 +11,62 @@ import math
 
 def mean(xs: list[float]) -> float:
     """Retourne la moyenne d'une liste de nombres."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez mean() - voir Grus ch.5")
+    
+    total = 0
+
+    for x in xs:
+        total += x
+
+    return total / len(xs)
 
 
 def median(xs: list[float]) -> float:
     """Retourne la mediane d'une liste de nombres."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez median() - voir Grus ch.5")
+
+    sorted_xs = sorted(xs)
+    n = len(sorted_xs)
+    midpoint = n // 2
+
+    if n % 2 == 1:
+        return sorted_xs[midpoint]
+    else:
+        return (sorted_xs[midpoint - 1] + sorted_xs[midpoint]) / 2
 
 
 def variance(xs: list[float]) -> float:
     """Retourne la variance d'une liste de nombres."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez variance() - voir Grus ch.5")
+
+    n = len(xs)
+    m = mean(xs)
+
+    total = 0
+
+    for x in xs:
+        total += (x - m) ** 2
+
+    return total / (n - 1)
 
 
 def standard_deviation(xs: list[float]) -> float:
     """Retourne l'ecart-type d'une liste de nombres."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez standard_deviation() - voir Grus ch.5")
+
+    return math.sqrt(variance(xs))
 
 
 def covariance(xs: list[float], ys: list[float]) -> float:
     """Retourne la covariance entre deux series."""
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez covariance() - voir Grus ch.5")
+
+    n = len(xs)
+
+    mean_x = mean(xs)
+    mean_y = mean(ys)
+
+    total = 0
+
+    for i in range(n):
+        total += (xs[i] - mean_x) * (ys[i] - mean_y)
+
+    return total / (n - 1)
 
 
 def correlation(xs: list[float], ys: list[float]) -> float:
@@ -44,5 +74,11 @@ def correlation(xs: list[float], ys: list[float]) -> float:
     Retourne le coefficient de correlation de Pearson entre deux series.
     Retourne 0 si l'une des series a un ecart-type nul.
     """
-    # VOTRE CODE ICI
-    raise NotImplementedError("Implementez correlation() - voir Grus ch.5")
+
+    std_x = standard_deviation(xs)
+    std_y = standard_deviation(ys)
+
+    if std_x == 0 or std_y == 0:
+        return 0
+
+    return covariance(xs, ys) / (std_x * std_y)
