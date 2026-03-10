@@ -9,8 +9,9 @@ Implementez-les avec du Python pur (listes, boucles, math).
 import math
 
 
-def mean(xs: list[float]) -> float:
-    """Retourne la moyenne d'une liste de nombres."""
+def mean(xs: list) -> float:
+    if not xs:
+        return 0.0  # ou float("nan") si tu préfères afficher NaN dans les métriques
     return sum(xs) / len(xs)
 
 

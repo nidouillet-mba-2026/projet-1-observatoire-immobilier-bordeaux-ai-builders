@@ -117,7 +117,13 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "📚 Méthodologie",
 ])
 
-
+pm2_dvf = dvf["prix_au_m2"].tolist()
+pm2_ann = ann["prix_m2"].tolist()
+ 
+if not pm2_dvf or not pm2_ann:
+    st.warning("⚠️ Aucune donnée avec ces filtres. Élargis la fourchette prix/m² ou le type de bien.")
+    st.stop()
+    
 # ══════════════════════════════════════════════════════════════════════════
 # TAB 1 , Tableau de bord
 # ══════════════════════════════════════════════════════════════════════════
