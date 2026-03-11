@@ -3,8 +3,7 @@
 Projet NidDouillet - Epitech IA Spé
 Analyse du marché immobilier de Toulon (INSEE 83137) combinant transactions DVF et annonces SeLoger, avec algorithmes statistiques et régression linéaire implémentés from scratch.
 
-**Application déployée :** https://observatoire-immo-toulon.streamlit.app
-
+**Application déployée :** https://projet-1-observatoire-immobilier-bordeaux-ai-builders-fork-8pz.streamlit.app/
 ---
 
 ## Architecture du projet
