@@ -1,6 +1,6 @@
 # Observatoire du Marché Immobilier Toulonnais
 
-Projet NidDouillet — Epitech IA Spé
+Projet NidDouillet - Epitech IA Spé
 Analyse du marché immobilier de Toulon (INSEE 83137) combinant transactions DVF et annonces SeLoger, avec algorithmes statistiques et régression linéaire implémentés from scratch.
 
 **Application déployée :** https://observatoire-immo-toulon.streamlit.app
@@ -43,7 +43,7 @@ Analyse du marché immobilier de Toulon (INSEE 83137) combinant transactions DVF
 
 ## Sources de données
 
-### DVF — Demandes de Valeurs Foncières
+### DVF - Demandes de Valeurs Foncières
 
 Source officielle : [data.gouv.fr](https://files.data.gouv.fr/geo-dvf/latest/csv/83/)
 
@@ -78,7 +78,7 @@ Colonnes conservées après nettoyage (13 sur 40) :
 
 Source : SeLoger.com via scraping Python
 
-Contient des biens **en cours de vente** — prix demandés, pas encore vendus.
+Contient des biens **en cours de vente** - prix demandés, pas encore vendus.
 
 | Attribut | Valeur |
 |----------|--------|
@@ -116,7 +116,7 @@ La stratégie adoptée est une **analyse parallèle** : chaque source est analys
 
 ## Pipelines de nettoyage
 
-### DVF — `analysis/cleaning_dvf.py`
+### DVF - `analysis/cleaning_dvf.py`
 
 ```
 Fichier brut (~8 000 lignes, séparateur ";")
@@ -131,7 +131,7 @@ Fichier brut (~8 000 lignes, séparateur ";")
 
 Filtrage supplémentaire à l'affichage dans le dashboard : prix_au_m2 entre 500 et 20 000 €/m².
 
-### Annonces SeLoger — `analysis/nettoyage.py`
+### Annonces SeLoger - `analysis/nettoyage.py`
 
 ```
 Fichier brut (colonnes avec unités texte : "350 000 €", "65 m²")
@@ -145,7 +145,7 @@ Fichier brut (colonnes avec unités texte : "350 000 €", "65 m²")
 
 ## Algorithmes from scratch
 
-### Statistiques — `analysis/stats.py`
+### Statistiques - `analysis/stats.py`
 
 Implémentées en Python pur, sans numpy/pandas/statistics.
 Référence : Joel Grus, *Data Science From Scratch*, chapitre 5.
@@ -161,7 +161,7 @@ Référence : Joel Grus, *Data Science From Scratch*, chapitre 5.
 
 La variance utilise le diviseur `n` (biaisée). Ce choix est requis par le CI : `variance([2,4,4,4,5,5,7,9])` doit retourner `4.0`.
 
-### Régression linéaire — `analysis/regression.py`
+### Régression linéaire - `analysis/regression.py`
 
 Implémentée sans sklearn.
 Référence : Joel Grus, *Data Science From Scratch*, chapitre 14.
@@ -196,13 +196,13 @@ Résultats observés sur ce marché (surface → prix) :
 
 ---
 
-## Dashboard Streamlit — `app/streamlit_app.py`
+## Dashboard Streamlit - `app/streamlit_app.py`
 
 Lancé avec `streamlit run app/streamlit_app.py`, le dashboard comporte 5 onglets.
 
 **Sidebar** : filtres globaux (type de bien, fourchette prix/m²) appliqués à l'ensemble des onglets.
 
-### Onglet 1 — Tableau de bord
+### Onglet 1 - Tableau de bord
 
 - KPIs DVF : nombre de transactions, prix/m² moyen, médian, écart-type, variance (calculés via `stats.py`)
 - KPIs SeLoger : nombre d'annonces, prix/m² moyen et médian, nombre de quartiers
@@ -210,13 +210,13 @@ Lancé avec `streamlit run app/streamlit_app.py`, le dashboard comporte 5 onglet
 - Écart moyen SeLoger vs DVF (indicateur de tension du marché)
 - Volume mensuel de transactions DVF avec évolution du prix médian (double axe)
 
-### Onglet 2 — Carte et Quartiers
+### Onglet 2 - Carte et Quartiers
 
 - Carte GPS des transactions DVF colorée par prix/m² (vert = bon marché, rouge = cher)
 - Heatmap des prix/m² par quartier SeLoger avec filtre sur le nombre minimum d'annonces
 - Classement complet des quartiers par prix moyen avec tableau interactif
 
-### Onglet 3 — Régression et Corrélations
+### Onglet 3 - Régression et Corrélations
 
 - Régression interactive : choix de la source (DVF ou SeLoger) et de la variable explicative (surface ou nombre de pièces)
 - Métriques affichées : alpha, beta, R², corrélation r (via `regression.py` et `stats.py`)
@@ -225,20 +225,20 @@ Lancé avec `streamlit run app/streamlit_app.py`, le dashboard comporte 5 onglet
 - Matrices de corrélation DVF et SeLoger
 - Analyse de l'impact du DPE sur le prix/m²
 
-### Onglet 4 — Opportunités
+### Onglet 4 - Opportunités
 
 - Scoring par z-score : `z = (prix_m2_quartier - mu_global) / sigma_global`
 - Classification des quartiers : sous-coté (z < −0.5), dans le marché, sur-coté (z > 0.5)
 - Filtres sur le budget maximum et la surface minimale
 - Tableau des annonces correspondantes avec leur signal d'opportunité
 
-### Onglet 5 — Méthodologie
+### Onglet 5 - Méthodologie
 
 - Documentation inline : sources, pipelines, formules statistiques, formules de régression
 
 ---
 
-## Analyse exploratoire — `analysis/exploration.py`
+## Analyse exploratoire - `analysis/exploration.py`
 
 Génère 12 graphiques dans `analysis/figures/` :
 
@@ -331,7 +331,7 @@ A chaque `git push`, le CI exécute `tests/test_auto_eval.py` et publie le score
 | Membre | Rôle |
 |--------|------|
 | Maxime Ribes | Data Engineer, Frontend |
-| Matthieu Barric | Data Engineer, AI Engineer |
+| Matthieu Baric | Data Engineer, AI Engineer |
 | Lena Pedelahore | Data Scientist |
 | Alexis De Malet | AI Engineer |
 | Lilou Legenvre | Frontend, DevOps |
@@ -340,6 +340,6 @@ A chaque `git push`, le CI exécute `tests/test_auto_eval.py` et publie le score
 
 ## Références
 
-- Joel Grus, *Data Science From Scratch*, O'Reilly — ch.5 (statistiques), ch.14 (régression)
+- Joel Grus, *Data Science From Scratch*, O'Reilly - ch.5 (statistiques), ch.14 (régression)
 - DVF : https://files.data.gouv.fr/geo-dvf/latest/csv/83/
-- INSEE code commune 83137 — Toulon (Var, PACA)
+- INSEE code commune 83137 - Toulon (Var, PACA)
